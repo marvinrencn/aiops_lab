@@ -1,0 +1,11 @@
+groups:
+- name: example
+  rules:
+  - alert: CpuHightRate
+    expr: 100 * (1 - sum by (instance)(increase(node_cpu_seconds_total{mode="idle"}[1m])) / sum by (instance)(increase(node_cpu_seconds_total[1m]))) > 20
+    for: 5m
+    labels:
+      severity: normal
+    annotations:
+      summary: Cpu Rate Alert by 1m
+      description: cpu rate is greater than 20%

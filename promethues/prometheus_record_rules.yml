@@ -1,0 +1,6 @@
+groups:
+  - name: example
+    rules: 
+    - record: test:go_memstats_alloc_bytes:sum
+      expr: sum(go_memstats_alloc_bytes) by (instance)
+
